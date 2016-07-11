@@ -8,10 +8,10 @@ import java.util.concurrent.TimeUnit;
  * Created by Oleksandra_Dmytrenko on 7/11/2016.
  */
 public class Page {
-    private static WebDriver driver;
+    protected WebDriver driver;
 
     public Page(WebDriver driver) {
-        this.driver = driver;
+        init(driver);
     }
 
     public void timeout(int howLong, TimeUnit unit) {
@@ -19,4 +19,7 @@ public class Page {
     }
 
 
+    public void init(final WebDriver driver) {
+        this.driver = driver;
+    }
 }
