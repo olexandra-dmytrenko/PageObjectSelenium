@@ -3,7 +3,6 @@ package googlesearch;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 
 /**
@@ -11,14 +10,13 @@ import org.openqa.selenium.support.PageFactory;
  */
 //@At(".*/login")
     //https://habrahabr.ru/post/134462/
-public class GoogleSearchPage {
-    private WebDriver driver;
+public class GoogleSearchPage extends Page{
 
     @FindBy(id = "lst-ib")
     private WebElement searchField;
 
     public GoogleSearchPage(WebDriver driver) {
-        init(driver);
+        super(driver);
     }
 
     public SearchResultPage getResultsForText(String searchText) {
@@ -27,8 +25,4 @@ public class GoogleSearchPage {
         return new SearchResultPage(driver);
     }
 
-    public void init(final WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
 }

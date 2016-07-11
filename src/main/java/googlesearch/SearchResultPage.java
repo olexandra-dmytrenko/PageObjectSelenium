@@ -1,19 +1,22 @@
 package googlesearch;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 /**
  * Created by olexandra on 7/11/16.
  */
-public class SearchResultPage {
-    private final WebDriver driver;
+public class SearchResultPage extends Page {
+
+    @FindBy(xpath = "(.//*[@id='rso']//a)[1]")
+    private WebElement firstLink;
 
     public SearchResultPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public String getFirstLinkText() {
-        return driver.findElement(By.xpath("(.//*[@id='rso']//a)[1]")).getText();
+        return firstLink.getText();
     }
 }
