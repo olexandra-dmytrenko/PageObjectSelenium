@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -14,12 +13,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class GoogleSearch {
 //https://www.youtube.com/watch?v=KCPI5JJNQTI
-    private WebDriver firefoxDriver;
+    private FirefoxDriver firefoxDriver;
+    private Page page;
 
     @Before
     public void setUp(){
         firefoxDriver = new FirefoxDriver();
-        firefoxDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        page = new Page(firefoxDriver);
+        page.timeout(2, TimeUnit.SECONDS);
         firefoxDriver.get("http://google.com.ua/");
 
     }
@@ -36,6 +37,7 @@ public class GoogleSearch {
         //when
         SearchResultPage searchReultPage = searchPage.getResultsForText("Wikipedia");
         //then
-        Assert.assertTrue(searchReultPage.getFirstLinkText().contains("wikipedia"));
+        page.timeout(2, TimeUnit.SECONDS);
+        Assert.assertTrue(searchReultPage.getFirstLinkText().contains("Вікіпедія"));
     }
 }
