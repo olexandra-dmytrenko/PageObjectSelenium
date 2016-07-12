@@ -1,9 +1,6 @@
 package googlesearch;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -13,23 +10,20 @@ import java.util.concurrent.TimeUnit;
  */
 public class GoogleSearch {
 //https://www.youtube.com/watch?v=KCPI5JJNQTI
-    private FirefoxDriver firefoxDriver;
-    private Page page;
+    private static FirefoxDriver firefoxDriver;
 
-    @Before
-    public void setUp(){
+    @BeforeClass
+    public static void setUp(){
         firefoxDriver = new FirefoxDriver();
-        page = new Page(firefoxDriver);
-        page.timeout(2, TimeUnit.SECONDS);
+        firefoxDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         firefoxDriver.get("http://google.com.ua/");
-
     }
 
-    @After
-    public void tearDown(){
+    @AfterClass
+    public static void tearDown(){
         firefoxDriver.close();
-
     }
+
     @Test
     public void firstLinkContainsText(){
         //given
@@ -37,7 +31,7 @@ public class GoogleSearch {
         //when
         SearchResultPage searchReultPage = searchPage.getResultsForText("Wikipedia");
         //then
-        page.timeout(2, TimeUnit.SECONDS);
+        firefoxDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         Assert.assertTrue(searchReultPage.getFirstLinkText().contains("Вікіпедія"));
     }
 }
