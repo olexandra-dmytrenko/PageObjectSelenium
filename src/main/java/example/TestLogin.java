@@ -7,6 +7,7 @@ import junit.framework.TestCase;
  * User: ab83625
  * Date: 10.11.2010
  * To change this template use File | Settings | File Templates.
+ * http://www.protesting.ru/automation/practice/pageobject_selenium.html
  */
 public class TestLogin extends TestCase {
    public void setUp() {
