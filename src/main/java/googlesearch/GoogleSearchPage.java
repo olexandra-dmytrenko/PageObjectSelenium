@@ -8,16 +8,17 @@ import org.openqa.selenium.WebElement;
 /**
  * Created by olexandra on 7/11/16.
  */
-public class GoogleSearchPage extends Page{
+class GoogleSearchPage extends Page{
 
-    public static final String SEARCH_FIELD_ID = "lst-ib";
+//    private static final String SEARCH_FIELD_ID = "lst-ib";
+    private static final By SEARCH_FIELD_ID = By.id("lst-ib");
 
-    public GoogleSearchPage(WebDriver driver) {
+    GoogleSearchPage(WebDriver driver) {
         super(driver);
     }
 
-    public SearchResultPage getResultsForText(String searchText) {
-        WebElement searchField = driver.findElement(By.id(SEARCH_FIELD_ID));
+    SearchResultPage getResultsForText(String searchText) {
+        WebElement searchField = driver.findElement(SEARCH_FIELD_ID);
         searchField.sendKeys(searchText);
         return new SearchResultPage(driver);
     }
