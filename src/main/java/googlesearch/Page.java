@@ -20,8 +20,12 @@ class Page {
     }
 
 
-    private void init(final WebDriver driver) {
+    protected void init(final WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    boolean contains(String text) {
+        return driver.getPageSource().contains(text);
     }
 }

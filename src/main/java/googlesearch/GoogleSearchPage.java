@@ -24,6 +24,7 @@ class GoogleSearchPage extends Page{
     SearchResultPage getResultsForText(String searchText) {
 //        searchField = driver.findElement(By.id("lst-ib"));
         searchField.sendKeys(searchText);
+        searchField.submit();
         return new SearchResultPage(driver);
     }
 }

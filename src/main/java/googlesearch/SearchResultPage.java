@@ -1,5 +1,6 @@
 package googlesearch;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,5 +19,10 @@ class SearchResultPage extends Page {
 
     String getFirstLinkText() {
         return firstLink.getText();
+    }
+
+    void pressOnLinkWithText(String text) {
+//        driver.findElement(By.linkText(text)).click();
+        driver.findElement(By.partialLinkText(text)).click();
     }
 }
