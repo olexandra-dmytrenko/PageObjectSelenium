@@ -11,20 +11,19 @@ import org.openqa.selenium.support.How;
  */
 //@At(".*/login")
     //https://habrahabr.ru/post/134462/
-public class GoogleSearchPage extends Page{
+class GoogleSearchPage extends Page{
 
     @FindBy(how = How.ID, using = "lst-ib")
 //    @FindBy(id = "lst-ib")
     private WebElement searchField;
 
-    public GoogleSearchPage(WebDriver driver) {
+    GoogleSearchPage(WebDriver driver) {
         super(driver);
     }
 
-    public SearchResultPage getResultsForText(String searchText) {
+    SearchResultPage getResultsForText(String searchText) {
 //        searchField = driver.findElement(By.id("lst-ib"));
         searchField.sendKeys(searchText);
         return new SearchResultPage(driver);
     }
-
 }
